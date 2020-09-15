@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <style>
+
+            body{
+                background-color: #c8e0c8 ;
+                padding: 25px;
+                font-family: 'Courier New';
+            }
+            h1{
+                margin-bottom: 50px;
+                color: #fffef2;
+                text-align: center;
+                font-weight: bold;
+                text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+            }
+            #input-container{
+                display: flex;
+                justify-content: space-around;
+            }
+            #input{
+                width: 80%;
+                height: 30px;
+                font-size: 20px;
+                text-align: center;
+            }
+            .plants-container{
+                margin: 30px;
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: space-around;
+            }
+            .plant{
+                background-color: #fffef2;
+                border: 2px solid black;
+                border-radius: 10px;
+                margin-top: 15px;
+                padding: 10px;
+                text-align: center;
+                font-size: 18px;
+            }
+
+        </style>
+
+    </head>
+    
+    <body>
+
+        <h1>Filter names of best plants for your home office!</h1>
+
+        <div id='input-container'>
+            <input id='input' type="text" placeholder="Start typing">
+        </div>
+
+        <div class='plants-container'>
+            <div class='plant'>Aloe Vera</div>
+            <div class='plant'>Peace Lily</div>
+            <div class='plant'>Spider Plant</div>
+            <div class='plant'>Snake Plant</div>
+            <div class='plant'>English Ivy</div>
+            <div class='plant'>Boston Fern</div>
+            <div class='plant'>African Violets</div>
+            <div class='plant'>Chinese Evergreen</div>
+            <div class='plant'>Chrysanthemum</div>
+        </div>
+
+        <script>
+
+            var userInput = document.querySelector('#input');
+            var plantsContainer = document.querySelector('.plants-container');
+            var plantsList = [];
+            var allPlants = document.querySelectorAll('.plant');
+
+            for(var i = 0 ; i < allPlants.length ; i++){
+                plantsList.push(allPlants[i].innerHTML);
+            }
+
+            userInput.addEventListener('keyup', function(event){
+                var userText = userInput.value;
+                for(var i = 0 ; i < allPlants.length ; i++){
+                    if(plantsList[i].indexOf(userText) < 0){
+                        allPlants[i].style.display = 'None';
+                    } else {
+                        allPlants[i].style.display = 'Block';
+                    }
+                }
+            });
+            
+        </script>
+    </body>
+</html>
